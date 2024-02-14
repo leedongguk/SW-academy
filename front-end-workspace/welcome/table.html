@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    </script>
+</head>
+<body>
+    <table border="1">
+        
+        <tr><td colspan="4" style="text-align: center;"><h1>회원가입양식</h1></td></tr>
+        <tr style="text-align: center;">
+            <td>구분</td>
+            <td>데이터 입력</td>
+            <td>유효성검사</td>
+            <td style="width: 100px;">비고</td>
+        </tr>
+        <tr style="height: 100px;">
+            <td>아이디</td>
+            <td><input type="text" placeholder="ID" /><button>아이디 확인</button></td>
+            <td>8자리, 첫글자 영문소문자</td>
+            <td></td>
+        </tr>
+        <tr style="height: 50px;">
+            <td>비밀번호</td>
+            <td><input type="text" placeholder="Pw" /></td>
+            <td rowspan="2">비밀번호 일치</td>
+            <td rowspan="2"></td>
+        </tr>
+        <tr style="height: 50px;">
+            <td>비번확인</td>
+            <td><input type="text" placeholder="Pw" /></td>
+        </tr>
+        <tr style="height: 50px;">
+            <td>성별</td>
+            <td><input type="checkbox" id="scales" name="scales" checked />남
+            <input type="checkbox" id="scales" name="scales" />여</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr style="height: 50px;">
+            <td>관심분야</td>
+            <td><input type="checkbox" id="scales" name="scales" checked />문학
+            <input type="checkbox" id="scales" name="scales" />어학
+            <input type="checkbox" id="scales" name="scales" />정보IT
+            <br/>
+            <input type="checkbox" id="scales" name="scales" />과학
+            <input type="checkbox" id="scales" name="scales" />수학
+            <input type="checkbox" id="scales" name="scales" />예술</td>
+            <td>2~3개 사이 선택</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>자기소개</td>
+            <td><textarea placeholder="ex) 저는 홍길동 입니다." style="height: 100px; width: 400px;"></textarea></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr style="text-align: center; height: 50px;">
+            <td colspan="4">
+            <button>가입</button>
+            <button>초기화</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
