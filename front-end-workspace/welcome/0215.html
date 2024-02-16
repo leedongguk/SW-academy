@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let startClock;
+        function startTime(){
+            let timer=document.getElementById('timer');
+         
+            startClock = setInterval(()=>{ //일정시간 주기로, 반복적으로 함수나 코드를 수행하는 함수
+                let now=new Date();
+                timer.innerHTML=now.toLocaleTimeString();
+            },1000)
+        }
+
+        function stopTime(){
+           // alert('time stop');
+            clearInterval(startClock) //setInterval() 함수에 의해 실행된 반복 작업을 종료하는 함수
+           
+        }
+    </script>
+</head>
+<body>
+    <div id="timer">Timer</div>
+    <input type="button" value="time_start" onclick="startTime()">
+    <input type="button" value="time_stop" onclick="stopTime()">
+</body>
+</body>
+</html>

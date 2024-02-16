@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function viewMonth(year, month) {
+            alert('Select ' + year + '년 ' + month + '월');
+            let start = getStartDay(year, month);
+            let end = new Date(year, month, 0).getDate(); // 해당 월의 마지막 날짜
+            alert('해당 년도의 startDay는' + start + '이고 마지막 날짜는' + end + '입니다.');
+            let ele = document.getElementById('cal');
+            ele.innerText = year + '년 ' + month + '월';
+            document.getElementById("box").innerHTML = calendar(start, end);
+        }
+
+        function getStartDay(year, month) {
+            return new Date(year, month - 1, 1).getDay();
+        }
+
+        function calendar(start, end) {
+            let string = "<table border=1 style='text-align:center; margin-left:800px; margin-top:100px; font-size:48px;'><tr><th style='color:red;'>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th style='color:red;'>토</th></tr>"
+            let count = 1 - start; // 해당 월의 시작 날짜
+            for (let i = 0; i < 5; i++) {
+                string += "<tr>";
+                for (let j = 0; j < 7; j++) {
+                    if (count <= end && count >= 1 && (j == 0 || j == 6))
+                        string += "<td style='color:red;'>" + count++ + "</td>";
+                    else if (count <= end && count >= 1)
+                        string += "<td>" + count++ + "</td>";
+                    else {
+                        string += "<td></td>";
+                        count++;
+                    }
+                }
+                string += "</tr>";
+            }
+            string += "</table>";
+            return string;
+        }
+    </script>
+</head>
+<body>
+    <div id="cal" style="text-align:center; font-size: 48px; color:blue; margin-bottom: 60px;">Calendar</div>
+    <form onsubmit="return false;" style="text-align: center;">
+        <input placeholder="년도" style="width: 100px; height: 100;" type="number" id="year" name="year" min="1900" max="2024">
+        <input placeholder="월" style="width: 100px; height: 100;" type="number" id="month" name="month" min="1" max="12">
+        <button onclick="viewMonth(document.getElementById('year').value, document.getElementById('month').value)" style="background-color: black; color: aliceblue;">달력 보기</button>
+    </form>
+    <form>
+    <div id="box"></div>
+    </form>
+
+</body>
+</html>

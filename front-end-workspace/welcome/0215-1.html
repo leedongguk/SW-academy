@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function viewMonth(month){
+            alert('select '+month);
+            if(month==1){
+                viewMonth1(1,31);
+            }else if(month==5){
+                viewMonth5(3,31);
+            }else if(month==9){
+                viewMonth9(1,30);
+            }
+        }
+
+        function viewMonth1(){
+            let ele = document.getElementById('cal');
+            ele.innerText = "1월";
+            document.getElementById("box").innerHTML = calendar(0, 31); /*월요일이 1일이므로 일요일은 0일 처리*/
+        }
+
+        function viewMonth5(){
+            let ele = document.getElementById('cal');
+            ele.innerText = "5월";
+            document.getElementById("box").innerHTML = calendar(-2, 31); /*수요일이 1일이므로 일요일은 -2일 처리*/
+        }
+
+        function viewMonth9(){
+            let ele = document.getElementById('cal');
+            ele.innerText = "9월";
+            document.getElementById("box").innerHTML = calendar(1, 30);
+        }
+        
+        function calendar(start,end){ /*시작날짜부터 종료 날짜까지 숫자 갖고 오기*/
+            let string = "<table border=1><tr><th style="+"color:red;"+">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th style="+"color:red;"+">토</th></tr>"
+            let count = start;
+            for(let i=0; i<5; i++){
+                string += "<tr>";
+                for(let j=0; j<7; j++){
+                    if(count <= end && count >= 1 && (j==0||j==6))
+                        string+="<td style="+"color:red;"+">" + count++ + "</td>";
+                    else if(count <= end && count >= 1)
+                        string+="<td>" + count++ + "</td>";
+                        else{
+                        string+="<td></td>";
+                        count++;
+                    }
+                }
+                string += "</tr>";
+            }
+            string += "</table>";
+            return string;
+        }
+    </script>
+</head>
+<body>
+    <div id="cal" style="font-size: 48px; color:blue; margin-bottom: 60px;;">Calendar</div>
+    <select onchange="viewMonth(this.value)">
+        <option>--월 선택--</option>
+        <option value="1" onclick="viewMonth1(1,31)">1월</option>
+        <option value="5" onclick="viewMonth5(3,31)">5월 </option>
+        <option value="9" onclick="viewMonth9(1,30)">9월 </option>
+    </select>
+
+    <div id="box"></div>
+    
+</body>
+</html>

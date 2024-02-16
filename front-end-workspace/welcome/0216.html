@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+
+    function buttonf1(){
+	
+	document.getElementById("imgId").src = "image/1.jpg";
+	
+    }
+    function buttonf2(){
+	
+        document.getElementById("imgId").src = "image/2.jpg";
+	
+    }
+    function buttonf3(){
+	
+        document.getElementById("imgId").src = "image/3.jpg";
+        
+	
+    }
+
+    </script>
+</head>
+<body>
+
+    <img id="imgId" src="image/1.jpg" style="width: 1200px; height: 600px;" />
+    <br/>
+    <input type="button" value="1" onclick="buttonf1()">
+    <input type="button" value="2" onclick="buttonf2()">
+    <input type="button" value="3" onclick="buttonf3()">
+
+</body>
+</html>
