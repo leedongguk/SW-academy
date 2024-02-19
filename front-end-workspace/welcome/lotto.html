@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        let a = [];
+        let count = 0;
+
+        function changebutton(){
+            lottoNum();
+            document.getElementById("image1").src = "image2/"+a[0]+".png";
+            document.getElementById("image2").src = "image2/"+a[1]+".png";
+            document.getElementById("image3").src = "image2/"+a[2]+".png";
+            document.getElementById("image4").src = "image2/"+a[3]+".png";
+            document.getElementById("image5").src = "image2/"+a[4]+".png";
+            document.getElementById("image6").src = "image2/"+a[5]+".png";
+            //sort();
+
+            let timer = setTimeout(function tick () {
+	        if(count < 6){
+                sort2();
+            }
+            count++;
+            let timer = setTimeout(tick, 3000)
+            }, 3000)
+            
+
+        }
+
+        /*
+        function sort(){
+            for(let i=0; i< a.length; i++){
+                for(let j=0; j< a.length;j++){
+                    let tmp = 0;
+                    if(a[i] < a[j]){
+                        tmp = a[i];
+                        a[i] = a[j];
+                        a[j] = tmp;
+                    }
+                }
+
+            }
+        }
+        */
+
+        function sort2(){
+                for(let j=0; j< a.length;j++){
+                    let tmp = 0;
+                    if(a[count] < a[j]){
+                        document.getElementById("image"+(count+1)+"").src = "image2/"+a[j]+".png";
+                        document.getElementById("image"+(j+1)+"").src = "image2/"+a[count]+".png";
+                        tmp = a[count];
+                        a[count] = a[j];
+                        a[j] = tmp;
+                    }
+            }
+        }
+
+        function lottoNum() {
+            a = [];  let i = 0;
+            while (i < 6) {
+               let n = Math.floor(Math.random() * 6) + 1;
+               if (! sameNum(n)) {
+                      a.push(n);
+                       i++;    
+                    }  
+                }
+        function sameNum (n) {
+            for (var i = 0; i < a.length; i++) {
+                if (n === a[i]) {
+                    return true;      
+                }    
+            }    
+            return false;  
+        }  
+        return a;
+    }
+
+    </script>
+</head>
+<body>
+    <img style="width: 100px; height: 100px; margin-right:20px;" src="image2/0.png" alt="" id="image1">
+    <img style="width: 100px; height: 100px; margin-right:20px;" src="image2/0.png" alt="" id="image2">
+    <img style="width: 100px; height: 100px; margin-right:20px;"src="image2/0.png" alt="" id="image3">
+    <img style="width: 100px; height: 100px; margin-right:20px;"src="image2/0.png" alt="" id="image4">
+    <img style="width: 100px; height: 100px; margin-right:20px;"src="image2/0.png" alt="" id="image5">
+    <img style="width: 100px; height: 100px; margin-right:20px;"src="image2/0.png" alt="" id="image6">
+    <br/>
+    <input type="button" value="정렬" onclick="changebutton()">
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Service</title>
+    <style>
+        table, td {
+            border : 1px solid black;
+            border-collapse: collapse;
+            position: relative;
+            margin: 10px 150px;
+        }
+
+        td {
+            width : 100px;
+            height: 40px;
+            text-align: center;
+        }
+
+        span {
+            margin-left: 150px;
+        }
+        div {
+            margin-bottom: 20px;
+        }
+    </style>
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            // 웹페이지를 모두 불러오면
+            $('#book_status').on('click',()=>{
+                //alert('in');
+                // 아이디 book_status 에
+                $.ajax({ // ajax는 파일을 읽어오는거라고 생각하는게 편함. 
+                    // library json 파일에 따라가서 읽고,
+                    url : 'library.json',
+                    success : function(data){ // data 객체데이터
+                        // console.log(data.data.bookInfo.list);\
+                        
+                        let listTag = '';
+                        let list = data.data.bookInfo.list;
+                        console.log(list);
+                        for(let i = 0; i < list.length; i++){
+                           // console.log(data.data.bookInfo.list[i]);
+                           listTag += `<tr><td>` + list[i].bookSeq + `</td><td>` + list[i].bookIsbn + `</td><td>` + list[i].bookTitle + `</td><td>`
+                            + list[i].bookAuthor + `</td><td>` + list[i].borrowStart + `</td><td>` + list[i].borrowEnd + `</td></tr>`;
+                        }
+
+                        $('#total').append(listTag);
+                    //    $('#container').html(JSON.stringify(data)); // 객체데이터를 문자열로 바꿔서 container 아이디에 있는곳에 붙여라.
+                    }
+                });
+            });
+        });
+
+    </script>
+   <body>
+    <span><button id="book_status">user1 도서현황보기</button></span>
+    <div id="container">
+    <div>
+        <table id="user_status">
+        <tr><td>대출도서</td><td>반납도서</td><td>미반납도서</td><td>반납예정도서</td><td>대출가능권수</td><td>이용상태</td><td>대출정지기간</td></tr>
+        
+    </table>
+    </div>
+    <br>
+    <div>
+        <span>전체도서목록</span>
+        <table id="total">
+            <tr><td>도서번호</td><td>도서명</td><td>저자</td><td>대출일자</td><td>반납일자</td></tr>
+            
+        </table>
+    </div>
+
+    <div>
+        <span>전체반납목록</span>
+        <table id="returned">
+            <tr><td>도서번호</td><td>도서명</td><td>저자</td><td>대출일자</td><td>반납일자</td></tr>
+                   </table>
+    </div>
+    <div>
+        <span>미반납목록</span>
+        <table id="not_returned">
+            <tr><td>도서번호</td><td>도서명</td><td>저자</td><td>대출일자</td><td>반납일자</td></tr>
+                    </table>
+    </div>
+    <div id = "container4">
+        <span>반납예정목록</span>
+        <table id="expecting_return">
+            <tr><td>도서번호</td><td>도서명</td><td>저자</td><td>대출일자</td><td>반납일자</td></tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
