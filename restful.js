@@ -10,6 +10,7 @@ app.use(express.urlencoded({
     extended : false
 }));
 
+
 //요청 처리
 // id 는 간단하게 숫자
 let userCounter = 0;
