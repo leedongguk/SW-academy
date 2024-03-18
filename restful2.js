@@ -10,6 +10,7 @@ app.use(express.urlencoded({
 }))
 
 let userCounter = 0;
+
 const users = [];
 
 const user1 = {
